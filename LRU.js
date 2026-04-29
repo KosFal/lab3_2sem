@@ -6,7 +6,7 @@ function memoizeLRU(fn, limit = 0) {
     const key = JSON.stringify(args);
 
     if (key in cache) {
-      console.log(`[Кеш HIT] Взято з кешу: ${key}`);
+      console.log(`${key}`);
 
       const index = keysHistory.indexOf(key);
       keysHistory.splice(index, 1);
@@ -29,3 +29,11 @@ function memoizeLRU(fn, limit = 0) {
     return result;
   };
 }
+
+const add = (a, b) => a + b;
+const lruMemoizedAdd = memoizeLRU(add, 2);
+
+lruMemoizedAdd(1, 2); 
+lruMemoizedAdd(3, 4); 
+lruMemoizedAdd(1, 2); 
+lruMemoizedAdd(5, 6); 
