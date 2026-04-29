@@ -25,3 +25,15 @@ function memoize(fn, limit = 0) {
     return result;
   };
 }
+
+const add = (a, b) => {
+  return a + b;
+};
+
+const memoizedAdd = memoize(add, 2);
+
+memoizedAdd(1, 2); 
+memoizedAdd(3, 4); 
+memoizedAdd(1, 2); 
+memoizedAdd(5, 6); 
+memoizedAdd(1, 2); 
